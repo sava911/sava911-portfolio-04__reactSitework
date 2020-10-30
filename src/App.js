@@ -10,18 +10,18 @@ class App extends Component {
             {name: 'Audi', year: '2016'},
             {name: 'Mazda', year: '2010'}
         ],
-        pageTitle: 'React components'
+        pageTitle: 'React components',
+        showCars: false
     }
 
-    changeTitleHandler = (newTitle) => {
+    tooggleTitleHandler = () => {
         this.setState({
-            pageTitle: newTitle
+            showCars: !this.state.showCars
         })
     }
-    handlerInput = (event) => {
-        this.setState({
-            pageTitle: event.target.value
-        })
+
+    inputHandler () {
+
     }
 
     render() {
@@ -29,18 +29,34 @@ class App extends Component {
             textAlign: 'center'
         }
 
-        const cars = this.state.cars
+
         return (
             <div style={divStyle}>
                 <h1>{this.state.pageTitle}</h1>
-                <input type="text" onChange={this.handlerInput}/>
-                <button onClick={this.changeTitleHandler.bind(this, 'click')}>change title</button>
-                <Car onChangeTitle={this.changeTitleHandler.bind(this, cars[0].name)} name={cars[0].name}
-                     year={cars[0].year}/>
-                <Car onChangeTitle={() => this.changeTitleHandler(cars[1].name)} name={cars[1].name}
-                     year={cars[1].year}/>
-                <Car onChangeTitle={() => this.changeTitleHandler(cars[2].name)} name={cars[2].name}
-                     year={cars[2].year}/>
+                <button onClick={this.tooggleTitleHandler}>change title</button>
+
+                {this.state.showCars ?
+                    this.state.cars.map((car, index) => {
+                        return (
+                            <Car
+                                key={index}
+                                name={car.name}
+                                year={car.year}
+                                inputHandler={(event) => this.inputHandler(event.target.value, car.name)}
+                            />
+                        )
+                    })
+                    : null
+                }
+
+
+                {/*<Car onChangeTitle={this.changeTitleHandler.bind(this, cars[0].name)} name={cars[0].name}*/}
+                {/*     year={cars[0].year}/>*/}
+                {/*<Car onChangeTitle={() => this.changeTitleHandler(cars[1].name)} name={cars[1].name}*/}
+                {/*     year={cars[1].year}/>*/}
+                {/*<Car onChangeTitle={() => this.changeTitleHandler(cars[2].name)} name={cars[2].name}*/}
+                {/*     year={cars[2].year}/>*/}
+
             </div>
         );
     }
