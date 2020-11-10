@@ -20,7 +20,7 @@ class App extends Component {
         })
     }
 
-    inputHandler () {
+    inputHandler() {
 
     }
 
@@ -50,12 +50,6 @@ class App extends Component {
                 }
 
 
-                {/*<Car onChangeTitle={this.changeTitleHandler.bind(this, cars[0].name)} name={cars[0].name}*/}
-                {/*     year={cars[0].year}/>*/}
-                {/*<Car onChangeTitle={() => this.changeTitleHandler(cars[1].name)} name={cars[1].name}*/}
-                {/*     year={cars[1].year}/>*/}
-                {/*<Car onChangeTitle={() => this.changeTitleHandler(cars[2].name)} name={cars[2].name}*/}
-                {/*     year={cars[2].year}/>*/}
 
             </div>
         );
