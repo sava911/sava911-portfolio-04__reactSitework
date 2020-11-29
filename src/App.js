@@ -14,7 +14,7 @@ class App extends Component {
         showCars: false
     }
 
-    tooggleTitleHandler = () => {
+    toggleTitleHandler = () => {
         this.setState({
             showCars: !this.state.showCars
         })
@@ -33,7 +33,7 @@ class App extends Component {
         return (
             <div style={divStyle}>
                 <h1>{this.state.pageTitle}</h1>
-                <button onClick={this.tooggleTitleHandler}>change title</button>
+                <button onClick={this.toggleTitleHandler}>change title</button>
 
                 {this.state.showCars ?
                     this.state.cars.map((car, index) => {
