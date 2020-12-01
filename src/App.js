@@ -28,27 +28,25 @@ class App extends Component {
         const divStyle = {
             textAlign: 'center'
         }
-
-
+        let cars = null
+        if (this.state.showCars){
+            cars = this.state.cars.map((car, index) => {
+                return (
+                    <Car
+                        key={index}
+                        name={car.name}
+                        year={car.year}
+                        inputHandler={(event) => this.inputHandler(event.target.value, car.name)}
+                    />
+                )
+            })
+        }
         return (
             <div style={divStyle}>
                 <h1>{this.state.pageTitle}</h1>
-                <button onClick={this.toggleTitleHandler}>change title</button>
+                <button onClick={this.toggleTitleHandler}>Toggle cars</button>
 
-                {this.state.showCars ?
-                    this.state.cars.map((car, index) => {
-                        return (
-                            <Car
-                                key={index}
-                                name={car.name}
-                                year={car.year}
-                                inputHandler={(event) => this.inputHandler(event.target.value, car.name)}
-                            />
-                        )
-                    })
-                    : null
-                }
-
+                {cars}
 
 
             </div>
