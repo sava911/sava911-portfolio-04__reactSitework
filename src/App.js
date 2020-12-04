@@ -20,8 +20,22 @@ class App extends Component {
         })
     }
 
-    inputHandler() {
+    onChangeName(name, index) {
+        const car = this.state.cars[index]
+        car.name = name
+        const cars = [...this.state.cars]
+        cars[index] = car
+        this.setState({
+            cars
+        })
+    }
 
+    deleteHandler(index) {
+        const cars = this.state.cars.concat()
+        cars.splice(index, 1)
+        this.setState({
+            cars
+        })
     }
 
     render() {
@@ -29,14 +43,15 @@ class App extends Component {
             textAlign: 'center'
         }
         let cars = null
-        if (this.state.showCars){
+        if (this.state.showCars) {
             cars = this.state.cars.map((car, index) => {
                 return (
                     <Car
                         key={index}
                         name={car.name}
                         year={car.year}
-                        inputHandler={(event) => this.inputHandler(event.target.value, car.name)}
+                        onDelete={this.deleteHandler.bind(this, index)}
+                        onChangeName={event => this.onChangeName(event.target.value, index)}
                     />
                 )
             })
