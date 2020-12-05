@@ -1,0 +1,10 @@
+
+
+.Car {
+    border: 1px solid #ccc;
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 5px  9 rgba(0, 0, 0, .14);
+    border-radius: 30px;
+}
