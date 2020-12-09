@@ -1,5 +1,5 @@
 import React from "react";
-import './Car.css'
+import './Car.module.scss'
 
 
 export default (props) => {
